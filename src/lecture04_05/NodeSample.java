@@ -1,4 +1,4 @@
-package lecture04;
+package lecture04_05;
 
 public class NodeSample {
 

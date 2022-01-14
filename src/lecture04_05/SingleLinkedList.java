@@ -1,4 +1,4 @@
-package lecture04;
+package lecture04_05;
 
 public class SingleLinkedList<E> {
 
@@ -108,6 +108,93 @@ public class SingleLinkedList<E> {
         node.data = replaceValue;
         return hand;
     }
+
+    public E remove(int index){ // 5
+        if(index < 0 || index >= size)
+            throw new ArrayIndexOutOfBoundsException();
+
+        if(index == 0)
+            return removeFirst();
+        else{
+            Node<E> node = getNode(index - 1);
+            return removeAfter(node);
+        }
+    }
+
+    public boolean remove(E item){
+        if(head ==null){
+            return false;
+        }
+
+        Node<E> current = head;
+        if(item.equals(current.data)){
+            removeFirst();
+            return true;
+        }
+        while(current.next != null){
+            if(item.equals(current.next.data)){
+                removeAfter(current);
+                return true;
+            }
+            current = current.next;
+
+        }
+        return false;
+    }
+
+    public void traverse(){
+        Node<E> current = head;
+
+        while(current != null){
+            System.out.println(current.data);
+            current = current.next;
+        }
+    }
+
+    public void replaceAll( E item, E itemReplaceWith){ // Dean , Muhyieddin
+        Node<E> current = head;
+
+        while(current != null){
+            if(current.data.equals(item)){
+                current.data = itemReplaceWith;
+            }
+            current = current.next;
+        }
+    }
+
+    public void traverseTemplate(){
+        Node<E> current = head;
+
+        while(current != null){
+            // TODO add functionality
+            current = current.next;
+        }
+    }
+
+    public int countGreaterThan(E item){
+        int count = 0;
+        Node<E> current = head;
+        while(current != null){
+            if( (int) current.data >= (int) item)
+                count++;
+            current = current.next;
+        }
+
+        return count;
+    }
+
+    public int findHighGrades(){
+        int count = 0;
+        Node<E> current = head;
+        while(current != null){
+            if( current.data.equals("A-") || current.data.equals("A") || current.data.equals("A+") )
+                count++;
+            current = current.next;
+        }
+        return count;
+    }
+
+
 
     public String toString() {
         Node<E> current = head;
