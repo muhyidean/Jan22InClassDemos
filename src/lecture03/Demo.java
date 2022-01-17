@@ -12,9 +12,12 @@ public class Demo {
         MyArrayListGeneral<Employee> empList = new MyArrayListGeneral<>();
 
         Employee emp1 = new Employee(111, "Dean", 20000);
+        Employee emp4 = new Employee(111, "Dean", 20000);
         Employee emp2 = new Employee(112,"Ryan", 100000);
         Employee emp3 = new Employee(113, "Eggie", 120000);
 
+        System.out.println(emp1.equals(emp4));
+        System.out.println("==========");
         empList.add(emp1);
         empList.add(emp2);
         empList.add(emp3);

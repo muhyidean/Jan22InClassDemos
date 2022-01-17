@@ -1,10 +1,44 @@
 package lecture04_05;
 
-public class SingleLinkedList<E> {
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
+public class SingleLinkedList<E> implements Iterable<E>{
 
     // Data members
     private Node<E> head = null;
     private int size = 0;
+
+
+    class MyIterator<E> implements Iterator<E>{
+        public MyIterator() {}
+        public Node<E> current = (Node<E>) head;
+
+        @Override
+        public boolean hasNext() {
+            return (current != null);
+        }
+        @Override
+        public E next() {
+            E item = current.data;
+            current = current.next;
+            return item;
+        }
+
+//        @Override
+//        public void remove(){
+//            E item = current.data;
+//            remove(item);
+//        }
+
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new MyIterator<E>();
+    }
+
 
     private static class Node<E>{
 
@@ -121,7 +155,8 @@ public class SingleLinkedList<E> {
         }
     }
 
-    public boolean remove(E item){
+    public boolean remove(Object i){
+        E item = (E) i;
         if(head ==null){
             return false;
         }

@@ -1,17 +1,46 @@
 package lecture04_05;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Demo {
 
     public static void main(String[] args) {
 
-        SingleLinkedList<Integer> gradesn = new SingleLinkedList<>();
+        List<String> list = new LinkedList<>();
+        list.add("Dean");
+        list.add("Eggie");
+        list.add("Charles");
 
-        gradesn.add(90);
-        gradesn.add(88);
-        gradesn.add(92);
-        gradesn.add(78);
 
-        System.out.println(gradesn.countGreaterThan(90));
+        Iterator<String> iter = list.iterator();
+
+        while(iter.hasNext()){
+            String item = iter.next().toLowerCase();
+            System.out.println(item);
+        }
+
+        System.out.println(list);
+
+
+
+
+//        SingleLinkedList<Integer> gradesn = new SingleLinkedList<>();
+//
+//        gradesn.add(90);
+//        gradesn.add(88);
+//        gradesn.add(92);
+//        gradesn.add(78);
+//
+//        for (int i:gradesn){
+//            i = 5;
+//            System.out.println(i);
+//        }
+//
+//        System.out.println(gradesn);
+
 
         SingleLinkedList<String> grades = new SingleLinkedList<>();
         grades.add("A");
@@ -20,7 +49,22 @@ public class Demo {
         grades.add("B+");
         grades.add("A");
         grades.add("B+");
-        System.out.print("ANSWER: " + grades.findHighGrades());
+
+//        Iterator<String> iter = grades.iterator();
+//
+//        while(iter.hasNext()){
+//            System.out.println(iter.next());
+//        }
+//        for (String s:grades){
+//            System.out.println(s);
+//        }
+
+//        for (String s: grades){
+//            System.out.println(s.toLowerCase());
+//        }
+
+//        System.out.println(grades);
+//        System.out.print("ANSWER: " + grades.findHighGrades());
 // Expected result --> 3
 
 //        Integer [] ints = new Integer[5];
