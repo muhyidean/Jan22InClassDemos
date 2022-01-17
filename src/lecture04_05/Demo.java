@@ -1,9 +1,6 @@
 package lecture04_05;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Demo {
 
@@ -13,6 +10,13 @@ public class Demo {
         list.add("Dean");
         list.add("Eggie");
         list.add("Charles");
+
+        String s3 = "Deaa";
+        String s1 = "Dean";
+        String s2 = "Dina";
+
+
+        System.out.println(s1.compareTo(s3));
 
 
         Iterator<String> iter = list.iterator();
@@ -25,6 +29,17 @@ public class Demo {
         System.out.println(list);
 
 
+        List<Student> students = new ArrayList<>();
+
+        students.add(new Student(111,"John",3.5));
+        students.add(new Student(112,"John",3.8));
+        students.add(new Student(113,"Jane",3.9));
+        students.add(new Student(114,"Abeil",3.9));
+
+        // [ 114, 113, 112, 111 ]
+        Comparator studentCom = new StudComparator();
+
+        Collections.sort(students,studentCom);
 
 
 //        SingleLinkedList<Integer> gradesn = new SingleLinkedList<>();
