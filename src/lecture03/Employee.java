@@ -44,7 +44,7 @@ public class Employee {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if(!(o instanceof Employee)) return false;
         Employee employee = (Employee) o;
         return id == employee.id && Double.compare(employee.salary, salary) == 0 && Objects.equals(name, employee.name);
     }
