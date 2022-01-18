@@ -1,14 +1,50 @@
 package lecture04_05;
 
+import lecture07.StackInterface;
+
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public class SingleLinkedList<E> implements Iterable<E>{
+public class SingleLinkedList<E> implements StackInterface<E>, Iterable<E>{
 
     // Data members
     private Node<E> head = null;
     private int size = 0;
+
+    @Override
+    public E push(E obj) {
+        addFirst(obj);
+        return head.data;
+    }
+
+    @Override
+    public E peek() {
+        if(empty())
+            throw new EmptyStackException();
+        return head.data;
+    }
+
+    @Override
+    public E pop() {
+        if(empty())
+            throw new EmptyStackException();
+
+        E hand = head.data;
+        removeFirst();
+        return hand;
+    }
+
+    @Override
+    public boolean empty() {
+        return head == null;
+    }
+
+    @Override
+    public int getSize() {
+        return size();
+    }
 
 
     class MyIterator<E> implements Iterator<E>{
@@ -26,11 +62,12 @@ public class SingleLinkedList<E> implements Iterable<E>{
             return item;
         }
 
-//        @Override
-//        public void remove(){
-//            E item = current.data;
-//            remove(item);
-//        }
+        @Override
+        public void remove(){
+            E item = current.data;
+            removeI(item);
+        }
+
 
     }
 
@@ -155,7 +192,8 @@ public class SingleLinkedList<E> implements Iterable<E>{
         }
     }
 
-    public boolean remove(Object i){
+
+    public boolean removeI(Object i){
         E item = (E) i;
         if(head ==null){
             return false;
