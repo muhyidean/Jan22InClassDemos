@@ -1,4 +1,4 @@
-package lecture04_05;
+package lecture06;
 
 public class Student {
 

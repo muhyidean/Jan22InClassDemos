@@ -30,6 +30,18 @@ public class Demo {
         StackInterface<String> s = new SingleLinkedList<>();
 
 
+        StackInterface<String> revWord = new StackArray<>();
+
+        String name = "Dean";
+        System.out.println(name);
+        for (int i = 0; i < name.length(); i++) {
+            revWord.push( String.valueOf(name.charAt(i)));
+        }
+
+        while(!revWord.empty()){
+            System.out.print(revWord.pop());
+        }
+
 
 
     }
