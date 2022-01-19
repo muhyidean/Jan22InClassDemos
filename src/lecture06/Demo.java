@@ -5,6 +5,15 @@ import java.util.*;
 public class Demo {
 
     public static void main(String[] args) {
+
+        Set<String> set = new HashSet<>();
+        set.add("Dean");
+        set.add("Eggie");
+
+        Iterator<String> iterator = set.iterator();
+        System.out.println(iterator.next());
+
+
         List<Student> students = new ArrayList<>();
 
         students.add(new Student(111,"John",3.3));
