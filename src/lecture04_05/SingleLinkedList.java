@@ -4,14 +4,16 @@ import lecture07.StackInterface;
 
 import java.util.EmptyStackException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public class SingleLinkedList<E> implements StackInterface<E>, Iterable<E>{
+public class SingleLinkedList<E> implements StackInterface<E>, MyList<E>{
 
     // Data members
     private Node<E> head = null;
     private int size = 0;
+
 
     @Override
     public E push(E obj) {
@@ -51,6 +53,7 @@ public class SingleLinkedList<E> implements StackInterface<E>, Iterable<E>{
         public MyIterator() {}
         public Node<E> current = (Node<E>) head;
 
+
         @Override
         public boolean hasNext() {
             return (current != null);
@@ -83,6 +86,7 @@ public class SingleLinkedList<E> implements StackInterface<E>, Iterable<E>{
         private E data;
         private Node<E> next;
 
+
         private Node (E item) {
             this.data = item;
             this.next = null;
@@ -96,8 +100,10 @@ public class SingleLinkedList<E> implements StackInterface<E>, Iterable<E>{
 
     // Helper methods
     private void addFirst(E item){
-        Node<E> temp = new Node<>(item, head);
-        head = temp;
+        Node<E> newNode = new Node<>(item);
+        Node<E> temp = head;
+        head = newNode;
+        newNode.next = temp;
         size++;
     }
 
@@ -265,6 +271,25 @@ public class SingleLinkedList<E> implements StackInterface<E>, Iterable<E>{
             current = current.next;
         }
         return count;
+    }
+
+
+    public void printReverse(){
+        StackInterface<E> s = new SingleLinkedList<>();
+
+//        Node<E> current = head;
+//        while(current != null){
+//            s.push(current.data);
+//            current = current.next;
+//        }
+        Iterator<E> iter = this.iterator();
+        while(iter.hasNext()){
+            s.push(iter.next());
+        }
+
+        for (int i = 0; i < size; i++) {
+            System.out.println(s.pop());
+        }
     }
 
 

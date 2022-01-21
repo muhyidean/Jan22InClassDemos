@@ -2,6 +2,7 @@ package lecture04_05;
 
 import lecture06.StudComparator;
 import lecture06.Student;
+import lecture07.StackInterface;
 
 import java.util.*;
 
@@ -9,10 +10,26 @@ public class Demo {
 
     public static void main(String[] args) {
 
-        List<String> list = new LinkedList<>();
+
+        String o1 = new String("A");
+        String o2 = o1;
+        o1 = new String("B");
+
+        System.out.println(o1);
+        System.out.println(o2);
+
+        MyList<String> list = new SingleLinkedList<>();
+
+
         list.add("Dean");
         list.add("Eggie");
         list.add("Charles");
+
+        System.out.println(list);
+
+        System.out.println("========");
+//        list.printReverse();
+
 
         String s3 = "Deaa";
         String s1 = "Dean";
@@ -30,8 +47,6 @@ public class Demo {
         }
 
         System.out.println(list);
-
-
 
 
 //        SingleLinkedList<Integer> gradesn = new SingleLinkedList<>();
